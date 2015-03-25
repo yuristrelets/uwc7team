@@ -1,4 +1,5 @@
 .idea
+.vagrant
 /bootstrap/compiled.php
 vendor
 node_modules
