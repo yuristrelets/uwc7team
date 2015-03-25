@@ -40,6 +40,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--cpus", "1"]
   end
 
+  config.vm.hostname = "vagrant-machine"
+
   # Provision config
   config.vm.provision :shell, :path => "bootstrap.sh"
 end
