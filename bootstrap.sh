@@ -113,9 +113,9 @@ sudo -u vagrant -H sh -c "composer install" > /dev/null 2>&1
 cd /vagrant/public
 sudo -u vagrant -H sh -c "bower install" > /dev/null 2>&1
 
-echo -e "\n-- Set fs permissions\n"
+#echo -e "\n-- Set fs permissions\n"
 #sudo chmod -R 777 /vagrant/app/storage/
-sudo -u vagrant -H sh -c "chmod -R 777 /vagrant/app/storage/"
+#sudo -u vagrant -H sh -c "chmod -R 777 /vagrant/app/storage/"
 
 echo -e "\n-- Creating a symlink for future phpunit use\n"
 ln -fs /vagrant/vendor/bin/phpunit /usr/local/bin/phpunit
