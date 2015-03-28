@@ -13,11 +13,18 @@ echo -e "\n-- Updating packages list\n"
 apt-get -qq update
 
 echo -e "\n-- Export environment variables locally for artisan\n"
-export APP_ENV=$APPENV
-export DB_HOST=$DBHOST
-export DB_NAME=$DBNAME
-export DB_USER=$DBUSER
-export DB_PASS=$DBPASSWD
+#export APP_ENV=$APPENV
+#export DB_HOST=$DBHOST
+#export DB_NAME=$DBNAME
+#export DB_USER=$DBUSER
+#export DB_PASS=$DBPASSWD
+
+echo "export APP_ENV=$APPENV" >> /home/vagrant/.bashrc
+echo "export DB_HOST=$DBHOST" >> /home/vagrant/.bashrc
+echo "export DB_NAME=$DBNAME" >> /home/vagrant/.bashrc
+echo "export DB_USER=$DBUSER" >> /home/vagrant/.bashrc
+echo "export DB_PASS=$DBPASSWD" >> /home/vagrant/.bashrc
+echo "\ncd /vagrant" >> /home/vagrant/.bashrc
 
 echo -e "\n-- Install base packages\n"
 apt-get -y install curl build-essential python-software-properties git > /dev/null 2>&1
