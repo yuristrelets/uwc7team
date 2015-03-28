@@ -14,7 +14,7 @@ class CreateProjectHelpersTable extends Migration {
 	{
 		Schema::create('project_helpers', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('project_id')->unsigned();
             $table->integer('help_type_id')->unsigned();
@@ -24,7 +24,6 @@ class CreateProjectHelpersTable extends Migration {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->foreign('help_type_id')->references('id')->on('help_types')->onDelete('cascade');
-            $table->index('title');
         });
 	}
 
