@@ -9,4 +9,9 @@ class HelpType extends Eloquent {
 	 */
 	protected $table = 'help_types';
 
+    public function projects()
+    {
+        return $this->belongsToMany('Project', 'project_help_type');
+    }
+
 }

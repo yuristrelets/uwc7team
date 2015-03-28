@@ -9,4 +9,14 @@ class ProjectHelper extends Eloquent {
 	 */
 	protected $table = 'project_helpers';
 
+    public function projects()
+    {
+        return $this->hasMany('Project');
+    }
+
+    public function users()
+    {
+        return $this->hasMany('User');
+    }
+
 }
