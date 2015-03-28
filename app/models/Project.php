@@ -29,4 +29,9 @@ class Project extends Eloquent {
         return $this->belongsToMany('HelpType', 'project_help_type');
     }
 
+    public function subscribers()
+    {
+        return $this->belongsToMany('User', 'subscriber_project');
+    }
+
 }
