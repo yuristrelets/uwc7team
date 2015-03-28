@@ -14,7 +14,7 @@ class CreateHelpTypesTable extends Migration {
 	{
 		Schema::create('help_types', function(Blueprint $table)
 		{
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('name');
             $table->index('name');
 		});
