@@ -17,6 +17,8 @@ class CreateProjectTagTable extends Migration {
             $table->integer('project_id')->unsigned();
             $table->integer('tag_id')->unsigned();
             $table->primary(array('project_id', 'tag_id'));
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
 		});
 	}
 
