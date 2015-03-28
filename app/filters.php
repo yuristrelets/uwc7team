@@ -35,6 +35,43 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
+    if(Auth::guest()) {
+        $token = Input::get(''); //Request::header('api-token');
+
+        $user = User::where('id', '=', 2)->firstOrFail();
+
+        $credentials = [
+            'api_token' => ''
+        ];
+
+
+        if (!Auth::once($user))
+        {
+            return Response::make('Unauthorized', 401);
+        }
+
+
+    }
+
+
+
+    /*Auth::login($user);
+
+    if (Auth::guest())
+    {
+        if (Request::ajax())
+        {
+            return Response::make('Unauthorized', 401);
+        }
+        else
+        {
+            return Redirect::guest('login');
+        }
+    }*/
+});
+
+/*Route::filter('auth', function()
+{
 	if (Auth::guest())
 	{
 		if (Request::ajax())
@@ -46,7 +83,7 @@ Route::filter('auth', function()
 			return Redirect::guest('login');
 		}
 	}
-});
+});*/
 
 
 Route::filter('auth.basic', function()
