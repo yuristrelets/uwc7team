@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration {
             $table->string('username');
             $table->string('password');
             $table->boolean('admin')->default(0);
-            $table->string('api_token');
+            $table->string('api_token')->nullable();
             $table->softDeletes();
 			$table->timestamps();
             $table->rememberToken();
