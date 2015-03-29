@@ -1,0 +1,17 @@
+<div class="well">
+    <form>
+        <div class="alert alert-danger" ng-show="error">
+            Login/password is not correct!
+        </div>
+
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Enter email" ng-model="model.email">
+        </div>
+
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" ng-model="model.password">
+        </div>
+
+        <button type="submit" class="btn btn-default" ng-click="login()">Login</button>
+    </form>
+</div>

@@ -11,14 +11,12 @@ class ProjectController extends \BaseController {
 	{
         try{
             $statusCode = 200;
-            $response = [
-                'projects'  => []
-            ];
+            $response = [];
 
             $projects = Project::where('is_draft',0)->where('is_closed',0)->get();
 
             foreach($projects as $project){
-                $response['projects'][] = [
+                $response[] = [
                     'id' => $project->id,
                     'title' => $project->title,
                     'description' => $project->description,
@@ -28,10 +26,10 @@ class ProjectController extends \BaseController {
                 ];
             }
 
-        }catch (Exception $e){
+        } catch (Exception $e){
             $statusCode = 400;
         } finally {
-            return Response::make($response, $statusCode);;
+            return Response::make($response, $statusCode);
         }
     }
 

@@ -1,0 +1,26 @@
+<div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="project in projects">
+                <td>
+                    <a ui-sref="app.projects"><strong>{{ project.title }}</strong></a><br>
+                    {{ project.description }}
+                </td>
+                <td class="text-right" style="width:150px;">
+                    <button class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button class="btn btn-danger btn-sm" ng-click="remove(project)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
