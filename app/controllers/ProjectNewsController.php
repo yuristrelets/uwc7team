@@ -7,10 +7,40 @@ class ProjectNewsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($projectId)
 	{
-		//
-	}
+        try{
+            $statusCode = 200;
+            $response = [
+                'projects'  => []
+            ];
+
+            $project = Project::findOrFail($projectId);
+//            var_dump($newsArray->count(),$newsArray);
+
+            foreach($project->news as $news){
+                var_dump($news);
+                $response['news'][] = [
+                    'id' => $news->id,
+                    'title' => $news->title,
+                    'description' => $news->description,
+                    'text' => $news->text,
+                    'created_at' => $news->created_at,
+                    'updated_at' => $news->updated_at,
+                ];
+            }
+
+        }catch (Exception $e){
+            $statusCode = 400;
+        } finally {
+            return Response::make($response, $statusCode);;
+        }
+//
+//        $news = Project::findOrFail($projectId)->news();
+//        var_dump($news);exit;
+//
+//        return Response::make($news, 200);
+    }
 
 
 	/**
@@ -38,13 +68,16 @@ class ProjectNewsController extends \BaseController {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+     * @param  int  $projectId
+     * @param  int  $newsId
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($projectId, $newsId)
 	{
-		//
-	}
+        $news = Project::findOrFail($projectId)->news()->findOrFail($newsId);
+
+        return Response::make($news, 200);
+    }
 
 
 	/**

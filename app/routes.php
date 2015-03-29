@@ -18,4 +18,5 @@ Route::get('/', function()
 
 Route::group(['prefix' => 'api'], function() {
     Route::resource('projects', 'ProjectController');
+    Route::resource('projects.news', 'ProjectNewsController');
 });
