@@ -1,13 +1,18 @@
 <?php
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class Project extends Eloquent {
 
-	/**
+    use SoftDeletingTrait;
+
+    /**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
 	protected $table = 'projects';
+    protected $softDelete = true;
+    protected $guarded = array('id');
 
     public function helpers()
     {
@@ -32,6 +37,11 @@ class Project extends Eloquent {
     public function subscribers()
     {
         return $this->belongsToMany('User', 'subscriber_project');
+    }
+
+    public function author()
+    {
+        return $this->belongsTo('User');
     }
 
 }

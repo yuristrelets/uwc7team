@@ -16,10 +16,8 @@ class ProjectNewsController extends \BaseController {
             ];
 
             $project = Project::findOrFail($projectId);
-//            var_dump($newsArray->count(),$newsArray);
 
             foreach($project->news as $news){
-                var_dump($news);
                 $response['news'][] = [
                     'id' => $news->id,
                     'title' => $news->title,
@@ -33,13 +31,8 @@ class ProjectNewsController extends \BaseController {
         }catch (Exception $e){
             $statusCode = 400;
         } finally {
-            return Response::make($response, $statusCode);;
+            return Response::make($response, $statusCode);
         }
-//
-//        $news = Project::findOrFail($projectId)->news();
-//        var_dump($news);exit;
-//
-//        return Response::make($news, 200);
     }
 
 
@@ -110,10 +103,25 @@ class ProjectNewsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($projectId, $newsId)
 	{
-		//
-	}
+        try{
+            $statusCode = 200;
+            $response = [
+                'status'  => []
+            ];
+
+            $news = Project::findOrFail($projectId)->news()->findOrFail($newsId);
+
+            $news->delete();
+            $response['status'] = 'ok';
+        }catch (Exception $e){
+            $statusCode = 400;
+            $response['status'] = 'error';
+        } finally {
+            return Response::make($response, $statusCode);
+        }
+    }
 
 
 }

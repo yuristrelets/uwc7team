@@ -8,6 +8,8 @@ class ProjectHelper extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'project_helpers';
+    protected $softDelete = true;
+
 
     public function projects()
     {
