@@ -165,13 +165,13 @@ class ProjectController extends \BaseController {
             try{
                 $statusCode = 200;
                 $response = [
-                    'status'  => 'ok'
+                    //'status'  => 'ok'
                 ];
 
                 $project = Project::findOrFail($id);
 
                 $project->delete();
-                $response['status'] = 'ok';
+                //$response['status'] = 'ok';
 
             }catch (Exception $e){
                 $statusCode = 400;

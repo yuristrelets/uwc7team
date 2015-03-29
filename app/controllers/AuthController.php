@@ -11,11 +11,8 @@ class AuthController extends \BaseController {
     {
         Auth::check() && Auth::logout();
 
-        $credentials = [
-            'email' => Input::get('email'),
-            'password' => Input::get('password'),
-            'admin' => 1
-        ];
+        $credentials = Input::only('email', 'password');
+        $credentials['admin'] = 1;
 
         if(!Auth::attempt($credentials)) {
             return Response::make('Unauthorized', 401);
@@ -32,7 +29,9 @@ class AuthController extends \BaseController {
      */
     public function destroy($id)
     {
-        //
+        if($user = Auth::check()) {
+            if($user->id === $id) Auth::logout();
+        }
     }
 
 
