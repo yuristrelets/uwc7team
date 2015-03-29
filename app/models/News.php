@@ -8,5 +8,10 @@ class News extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'news';
+    protected $softDelete = true;
 
+    public function project()
+    {
+        return $this->belongsTo('Project');
+    }
 }
