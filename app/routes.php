@@ -20,3 +20,8 @@ Route::group(['prefix' => 'api'], function() {
     Route::resource('projects', 'ProjectController');
     Route::resource('projects.news', 'ProjectNewsController');
 });
+
+Route::get('/admin', function()
+{
+    return View::make('admin');
+});
