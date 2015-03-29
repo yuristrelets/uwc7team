@@ -126,8 +126,6 @@ class ProjectController extends \BaseController {
                 'projects'  => [],
                 'status' => 'save_error'
             ];
-            $data = Input::all();
-
             $project = Project::findOrFail($id);
 
             $project->title = Input::get('title',$project->title);
